@@ -12,5 +12,8 @@ static const List<Color> greeGradient = [
   Color(0xff63B5AF),
   Color(0xff438863),
 ];
-
+static const List<Color> geyGradient = [
+  Color(0xffB5B5B5),
+  Color(0xff7F7F7F),
+];
 }
