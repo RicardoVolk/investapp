@@ -15,7 +15,7 @@ class SplashPage extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: 
-            AppColors.greeGradient,
+            AppColors.greenGradient,
             ),
         ),
         child: Text ('financy',
