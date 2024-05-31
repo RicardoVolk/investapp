@@ -18,7 +18,7 @@ class SplashPage extends StatelessWidget {
             AppColors.greeGradient,
             ),
         ),
-        child: Text ('Financy',
+        child: Text ('financy',
           style: AppTextStyles.bigText50.copyWith(color: AppColors.white)
       ),
       ),
