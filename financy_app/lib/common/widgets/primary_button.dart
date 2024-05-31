@@ -6,10 +6,10 @@ class PrimaryButton extends StatelessWidget {
   final String text;
 
   const PrimaryButton({
-    Key? key,
+    super.key,
     this.onPressed,
     required this.text,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
