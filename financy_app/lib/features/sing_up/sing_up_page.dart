@@ -26,11 +26,19 @@ class SingUpPage extends StatelessWidget {
             style: AppTextStyles.mediumText
                 .copyWith(color: AppColors.greelightTwo),
           ),
-          Expanded(
-            child: Image.asset('assets/images/sign_up_image.png'),
+          Image.asset('assets/images/sign_up_image.png'),
+          Form(
+            child: Column(
+              children: [
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'Your Name',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ],
+            ),
           ),
-          TextFormField(),
-          const TextField(),
           Padding(
             padding: const EdgeInsets.only(
               left: 32.0,
