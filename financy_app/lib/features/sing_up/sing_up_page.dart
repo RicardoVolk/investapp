@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:financy_app/common/constats/app_colors.dart';
 import 'package:financy_app/common/constats/app_text_styles.dart';
+import 'package:financy_app/common/widgets/custom_text_form_field.dart';
 import 'package:financy_app/common/widgets/multi_text_button_widget.dart';
 import 'package:financy_app/common/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
@@ -27,14 +28,12 @@ class SingUpPage extends StatelessWidget {
                 .copyWith(color: AppColors.greelightTwo),
           ),
           Image.asset('assets/images/sign_up_image.png'),
-          Form(
+          const Form(
             child: Column(
               children: [
-                TextFormField(
-                  decoration: const InputDecoration(
-                    labelText: 'Your Name',
-                    border: OutlineInputBorder(),
-                  ),
+                CustomTextFormField(
+                  labelText: "your name",
+                  hingText: "John Doe",
                 ),
               ],
             ),
