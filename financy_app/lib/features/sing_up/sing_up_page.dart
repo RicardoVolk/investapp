@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:financy_app/common/constats/app_colors.dart';
 import 'package:financy_app/common/constats/app_text_styles.dart';
+import 'package:financy_app/common/widgets/Password_form_field.dart';
 import 'package:financy_app/common/widgets/custom_text_form_field.dart';
 import 'package:financy_app/common/widgets/multi_text_button_widget.dart';
 import 'package:financy_app/common/widgets/primary_button.dart';
@@ -34,6 +35,16 @@ class SingUpPage extends StatelessWidget {
                 CustomTextFormField(
                   labelText: "your name",
                   hingText: "John Doe",
+                ),
+                PasswordFordField(
+                  labelText: "choose your password",
+                  hingText: "*********",
+                  controller: null,
+                ),
+                PasswordFordField(
+                  labelText: "confirme your password",
+                  hingText: "*********",
+                  controller: null,
                 ),
               ],
             ),

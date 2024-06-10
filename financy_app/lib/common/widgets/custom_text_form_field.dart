@@ -11,6 +11,8 @@ class CustomTextFormField extends StatefulWidget {
   final TextInputType? keyBoardType;
   final int? maxLength;
   final TextInputAction? textInputAction;
+  final Widget? suffixIcon;
+  final bool? obscureText;
 
   const CustomTextFormField({
     this.padding,
@@ -22,6 +24,8 @@ class CustomTextFormField extends StatefulWidget {
     this.keyBoardType,
     this.maxLength,
     this.textInputAction,
+    this.suffixIcon,
+    this.obscureText,
   });
 
   @override
@@ -38,6 +42,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       padding: widget.padding ??
           const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
       child: TextFormField(
+        obscureText: widget.obscureText ?? false,
         textInputAction: widget.textInputAction,
         maxLength: widget.maxLength,
         keyboardType: widget.keyBoardType,
@@ -45,6 +50,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         textCapitalization:
             widget.textCapitalization ?? TextCapitalization.none,
         decoration: InputDecoration(
+          suffixIcon: widget.suffixIcon,
           floatingLabelBehavior: FloatingLabelBehavior.always,
           hintText: widget.hingText,
           labelText: widget.labelText?.toUpperCase(),
