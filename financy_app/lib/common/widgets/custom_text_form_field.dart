@@ -1,6 +1,7 @@
 import 'package:financy_app/common/constats/app_colors.dart';
 import 'package:financy_app/common/constats/app_text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CustomTextFormField extends StatefulWidget {
   final String? hingText;
@@ -13,6 +14,7 @@ class CustomTextFormField extends StatefulWidget {
   final TextInputAction? textInputAction;
   final Widget? suffixIcon;
   final bool? obscureText;
+  final List<TextInputFormatter>? inputFormatters;
 
   const CustomTextFormField({
     this.padding,
@@ -26,6 +28,7 @@ class CustomTextFormField extends StatefulWidget {
     this.textInputAction,
     this.suffixIcon,
     this.obscureText,
+    this.inputFormatters,
   });
 
   @override
@@ -34,7 +37,7 @@ class CustomTextFormField extends StatefulWidget {
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
   final defaultBorder = const OutlineInputBorder(
-    borderSide: BorderSide(color: AppColors.greelightTwo),
+    borderSide: BorderSide(color: AppColors.greenOne),
   );
   @override
   Widget build(BuildContext context) {
@@ -42,6 +45,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       padding: widget.padding ??
           const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
       child: TextFormField(
+        inputFormatters: widget.inputFormatters,
         obscureText: widget.obscureText ?? false,
         textInputAction: widget.textInputAction,
         maxLength: widget.maxLength,
@@ -51,8 +55,10 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             widget.textCapitalization ?? TextCapitalization.none,
         decoration: InputDecoration(
           suffixIcon: widget.suffixIcon,
-          floatingLabelBehavior: FloatingLabelBehavior.always,
           hintText: widget.hingText,
+          hintStyle:
+              AppTextStyles.inputHintText.copyWith(color: AppColors.greenTwo),
+          floatingLabelBehavior: FloatingLabelBehavior.always,
           labelText: widget.labelText?.toUpperCase(),
           labelStyle:
               AppTextStyles.inputLabelText.copyWith(color: AppColors.gray),
