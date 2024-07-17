@@ -1,35 +1,53 @@
-import 'package:financy_app/common/constats/app_colors.dart';
-import 'package:financy_app/common/constats/app_text_styles.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first, use_super_parameters
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../constants/app_colors.dart';
+import '../constants/app_text_styles.dart';
+
 class CustomTextFormField extends StatefulWidget {
-  final String? hingText;
-  final String? labelText;
-  final TextEditingController? controller;
-  final TextCapitalization? textCapitalization;
   final EdgeInsetsGeometry? padding;
-  final TextInputType? keyBoardType;
+  final String? hintText;
+  final String? labelText;
+  final TextCapitalization? textCapitalization;
+  final TextEditingController? controller;
+  final TextInputType? keyboardType;
   final int? maxLength;
   final TextInputAction? textInputAction;
   final Widget? suffixIcon;
   final bool? obscureText;
   final List<TextInputFormatter>? inputFormatters;
+  final FormFieldValidator<String>? validator;
+  final String? helperText;
+  final GestureTapCallback? onTap;
+  final bool readOnly;
+  final FocusNode? focusNode;
+  final ValueSetter<PointerEvent>? onTapOutside;
+
+  final VoidCallback? onEditingComplete;
 
   const CustomTextFormField({
+    Key? key,
     this.padding,
-    super.key,
-    this.hingText,
+    this.hintText,
     this.labelText,
     this.textCapitalization,
     this.controller,
-    this.keyBoardType,
+    this.keyboardType,
     this.maxLength,
     this.textInputAction,
     this.suffixIcon,
     this.obscureText,
     this.inputFormatters,
-  });
+    this.validator,
+    this.helperText,
+    this.onTap,
+    this.readOnly = false,
+    this.focusNode,
+    this.onTapOutside,
+    this.onEditingComplete,
+  }) : super(key: key);
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -37,38 +55,70 @@ class CustomTextFormField extends StatefulWidget {
 
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
   final defaultBorder = const OutlineInputBorder(
-    borderSide: BorderSide(color: AppColors.greenOne),
+    borderSide: BorderSide(
+      color: AppColors.greenOne,
+    ),
   );
+
+  String? _helperText;
+
+  @override
+  void initState() {
+    super.initState();
+    _helperText = widget.helperText;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: widget.padding ??
-          const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+          const EdgeInsets.symmetric(
+            horizontal: 24.0,
+            vertical: 12.0,
+          ),
       child: TextFormField(
+        focusNode: widget.focusNode,
+        readOnly: widget.readOnly,
+        onTap: widget.onTap,
+        onEditingComplete: widget.onEditingComplete ??
+            () {
+              FocusScope.of(context).nextFocus();
+            },
+        onTapOutside: widget.onTapOutside ??
+            (_) {
+              if (FocusScope.of(context).hasFocus) {
+                FocusScope.of(context).unfocus();
+              }
+            },
+        onChanged: (value) {
+          if (value.length == 1) {
+            setState(() {
+              _helperText = null;
+            });
+          } else if (value.isEmpty) {
+            setState(() {
+              _helperText = widget.helperText;
+            });
+          }
+        },
+        validator: widget.validator,
+        style: AppTextStyles.inputText.copyWith(color: AppColors.greenOne),
         inputFormatters: widget.inputFormatters,
         obscureText: widget.obscureText ?? false,
         textInputAction: widget.textInputAction,
         maxLength: widget.maxLength,
-        keyboardType: widget.keyBoardType,
+        keyboardType: widget.keyboardType,
         controller: widget.controller,
         textCapitalization:
             widget.textCapitalization ?? TextCapitalization.none,
         decoration: InputDecoration(
+          errorMaxLines: 3,
+          helperText: _helperText,
+          helperMaxLines: 3,
           suffixIcon: widget.suffixIcon,
-          hintText: widget.hingText,
-          hintStyle:
-              AppTextStyles.inputHintText.copyWith(color: AppColors.greenTwo),
+          hintText: widget.hintText,
           floatingLabelBehavior: FloatingLabelBehavior.always,
           labelText: widget.labelText?.toUpperCase(),
-          labelStyle:
-              AppTextStyles.inputLabelText.copyWith(color: AppColors.gray),
-          focusedBorder: defaultBorder,
-          focusedErrorBorder: defaultBorder.copyWith(
-              borderSide: const BorderSide(color: Colors.red)),
-          errorBorder: defaultBorder.copyWith(
-              borderSide: const BorderSide(color: Colors.red)),
-          enabledBorder: defaultBorder,
-          disabledBorder: defaultBorder,
         ),
       ),
     );

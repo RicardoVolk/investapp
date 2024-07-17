@@ -1,24 +1,31 @@
+// ignore_for_file: use_super_parameters
+
 import 'package:flutter/material.dart';
 
-import '../constats/app_colors.dart';
-import '../constats/app_text_styles.dart';
+import '../constants/app_colors.dart';
+import '../constants/app_text_styles.dart';
 
 class PrimaryButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final String text;
 
   const PrimaryButton({
-    super.key,
+    Key? key,
     this.onPressed,
     required this.text,
-  });
+  }) : super(key: key);
+
+  final BorderRadius _borderRadius =
+      const BorderRadius.all(Radius.circular(24.0));
 
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Colors.transparent,
       child: Ink(
+        height: 48.0,
         decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(38.0)),
+          borderRadius: _borderRadius,
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -28,14 +35,9 @@ class PrimaryButton extends StatelessWidget {
           ),
         ),
         child: InkWell(
-          borderRadius: const BorderRadius.all(Radius.circular(38.0)),
+          borderRadius: _borderRadius,
           onTap: onPressed,
-          child: Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(38.0)),
-            ),
-            alignment: Alignment.center,
-            height: 64.0,
+          child: Align(
             child: Text(
               text,
               style: AppTextStyles.mediumText18.copyWith(
