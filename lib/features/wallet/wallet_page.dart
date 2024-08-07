@@ -1,6 +1,7 @@
 // ignore_for_file: type_literal_in_constant_pattern
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../common/constants/constants.dart';
 import '../../common/extensions/extensions.dart';

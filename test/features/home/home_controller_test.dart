@@ -5,6 +5,7 @@ import 'package:financy_app/features/home/home_state.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../common/features/balance/balance_controller_test.dart';
 import '../../mock/mock_classes.dart';
 
 void main() {

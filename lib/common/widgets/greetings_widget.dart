@@ -1,3 +1,4 @@
+import 'package:financy_app/common/extensions/extensions.dart';
 import 'package:financy_app/features/home/home.dart';
 import 'package:financy_app/locator.dart';
 import 'package:flutter/material.dart';

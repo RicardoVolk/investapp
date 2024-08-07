@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:financy_app/common/constants/constants.dart';
 import 'package:financy_app/common/extensions/extensions.dart';
 import 'package:financy_app/locator.dart';
@@ -159,7 +161,7 @@ class _StatsPageState extends State<StatsPage>
                                               _statsController.monthName(value);
                                       }
 
-                                      return Text(text);
+                                      return const Text('text');
                                     },
                                   ),
                                 ),

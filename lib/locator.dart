@@ -1,3 +1,4 @@
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:financy_app/common/features/balance/balance_controller.dart';
 import 'package:financy_app/common/features/transaction/transaction_controller.dart';
 import 'package:financy_app/features/forgot_password/forgot_password_controller.dart';
@@ -17,6 +18,8 @@ import 'package:financy_app/services/secure_storage.dart';
 import 'package:financy_app/services/sync_service/sync_service.dart';
 import 'package:financy_app/services/user_data_service/user_data_service.dart';
 import 'package:financy_app/services/user_data_service/user_data_service_impl.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get_it/get_it.dart';
 
 import 'features/sign_in/sign_in.dart';
 import 'features/sign_up/sign_up_controller.dart';

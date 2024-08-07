@@ -2,6 +2,7 @@
 
 import 'dart:developer';
 
+import 'package:financy_docs/widgets/widgets.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -194,7 +195,7 @@ class _SignUpPageState extends State<SignUpPage> with CustomModalSheetMixin {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Agreements(),
+                          builder: (context) => const Agreements(),
                         ),
                       );
                     },

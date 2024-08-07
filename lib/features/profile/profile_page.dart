@@ -1,6 +1,7 @@
 // ignore_for_file: type_literal_in_constant_pattern, use_build_context_synchronously
 
 import 'package:financy_app/common/extensions/extensions.dart';
+import 'package:financy_docs/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/constants/constants.dart';
