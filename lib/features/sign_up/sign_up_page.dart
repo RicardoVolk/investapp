@@ -194,7 +194,7 @@ class _SignUpPageState extends State<SignUpPage> with CustomModalSheetMixin {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Agreements(),
+                          builder: (context) => Agreements(),
                         ),
                       );
                     },

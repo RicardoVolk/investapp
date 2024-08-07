@@ -1,6 +1,7 @@
 import 'package:financy_app/common/constants/constants.dart';
 import 'package:financy_app/common/extensions/extensions.dart';
 import 'package:financy_app/locator.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/widgets/widgets.dart';
