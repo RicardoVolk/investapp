@@ -1,11 +1,7 @@
-import 'dart:developer';
-
-import 'package:financy_app/common/constats/app_colors.dart';
-import 'package:financy_app/common/constats/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
-import '../../common/widgets/multi_text_button_widget.dart';
-import '../../common/widgets/primary_button.dart';
+import '../../common/constants/constants.dart';
+import '../../common/widgets/widgets.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
@@ -13,57 +9,67 @@ class OnboardingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Align(
-        child: Column(
-          children: [
-            const SizedBox(height: 60.0),
-            Expanded(
-              child: Container(
-                color: AppColors.iceWhite,
-                child: Image.asset('assets/images/onboarding_image.png'),
-              ),
+      backgroundColor: AppColors.iceWhite,
+      body: Column(
+        children: [
+          const SizedBox(height: 48.0),
+          Expanded(
+            child: Image.asset(
+              'assets/images/onboarding_image.png',
             ),
-            Text(
-              'Spend Smarter',
-              style:
-                  AppTextStyles.mediumText.copyWith(color: AppColors.greenTwo),
+          ),
+          Text(
+            'Spend Smarter',
+            textAlign: TextAlign.center,
+            style: AppTextStyles.mediumText36.copyWith(
+              color: AppColors.greenOne,
             ),
-            Text(
-              'Save More',
-              style:
-                  AppTextStyles.mediumText.copyWith(color: AppColors.greenTwo),
+          ),
+          Text(
+            'Save More',
+            textAlign: TextAlign.center,
+            style: AppTextStyles.mediumText36.copyWith(
+              color: AppColors.greenOne,
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 32.0,
-                right: 32.0,
-                top: 16.0,
-                bottom: 4.0,
-              ),
-              child: PrimaryButton(
-                onPressed: () {},
-                text: 'Get Started',
-              ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 32.0,
+              right: 32.0,
+              top: 16.0,
+              bottom: 4.0,
             ),
-            const SizedBox(height: 16.0),
-            MultiTextButton(
-              onPressed: () => log('tap'),
-              children: [
-                Text(
-                  'Alredy have account? ',
-                  style:
-                      AppTextStyles.smallText.copyWith(color: AppColors.gray),
+            child: PrimaryButton(
+              key: Keys.onboardingGetStartedButton,
+              text: 'Get Started',
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  NamedRoute.signUp,
+                );
+              },
+            ),
+          ),
+          MultiTextButton(
+            key: Keys.onboardingAlreadyHaveAccountButton,
+            onPressed: () => Navigator.pushNamed(context, NamedRoute.signIn),
+            children: [
+              Text(
+                'Already have account? ',
+                style: AppTextStyles.smallText.copyWith(
+                  color: AppColors.grey,
                 ),
-                Text(
-                  'Log in',
-                  style: AppTextStyles.smallText
-                      .copyWith(color: AppColors.greenTwo),
+              ),
+              Text(
+                'Sign In ',
+                style: AppTextStyles.smallText.copyWith(
+                  color: AppColors.greenOne,
                 ),
-              ],
-            ),
-            const SizedBox(height: 40.0),
-          ],
-        ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 24.0),
+        ],
       ),
     );
   }

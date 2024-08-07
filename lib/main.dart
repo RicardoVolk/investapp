@@ -1,6 +1,18 @@
-import 'package:financy_app/app.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+import 'app.dart';
+import 'firebase_options.dart';
+import 'locator.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  setupDependencies();
+
+  await locator.allReady();
+
   runApp(const App());
 }
